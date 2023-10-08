@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс Teacher. Содержит свойства Teacher, а также имитирует свойства класса Community
+    /// </summary>
     internal class Teacher : Community
     {
         private string _subject;
         private byte _experienceYears;
         private string _qualification;
+
+        /// <summary>
+        /// Установка и получение поля _subject.
+        /// </summary>
         public string Subject
         {
             get => _subject;
@@ -27,21 +30,19 @@ namespace Lab5
                 }
             }
         }
+
+        /// <summary>
+        /// Установка и получение поля _experienceYears.
+        /// </summary>
         public byte ExperienceYears
         {
             get => _experienceYears;
-            set
-            {
-                if (value >= 0)
-                {
-                    _experienceYears = value;
-                }
-                else
-                {
-                    throw new FormatException("Incorrect experience year.");
-                }
-            }
+            set => _experienceYears = value;
         }
+
+        /// <summary>
+        /// Установка и получение поля _qualification.
+        /// </summary>
         public string Qualification
         {
             get => _qualification;
@@ -59,6 +60,17 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Teacher и наследует свойства Community.
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Гендер (true men, false woman)</param>
+        /// <param name="address">Адрес проживания</param>
+        /// <param name="contact">Номер телефона</param>
+        /// <param name="subject">Предмет который ведёт преподаватель</param>
+        /// <param name="experienceYears">Опыт работы</param>
+        /// <param name="qualification">Квалификация</param>
         public Teacher(string name, byte age, bool gender, string address, string contact, string subject, byte experienceYears, string qualification) : base(name, age, gender, address, contact)
         {
             Subject = subject;

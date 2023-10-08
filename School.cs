@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс School содержит общую информацию о школе.
+    /// </summary>
     internal class School
     {
         private string _name;
@@ -14,7 +13,11 @@ namespace Lab5
         private bool _gender;
         private string _address;
         private string _contact;
+        private const byte MAX_YEAR = 100;
 
+        /// <summary>
+        /// Установка и получение поля _name.
+        /// </summary>
         public string Name
         {
             get => _name;
@@ -30,12 +33,16 @@ namespace Lab5
                 }
             }
         }
+
+        /// <summary>
+        /// Установка и получение поля _age.
+        /// </summary>
         public byte Age
         {
             get => _age;
             set
             {
-                if (value > 0)
+                if (value < MAX_YEAR)
                 {
                     _age = value;
                 }
@@ -45,11 +52,19 @@ namespace Lab5
                 }
             }
         }
+
+        /// <summary>
+        /// Установка и получение поля _gender.
+        /// </summary>
         public bool Gender
         {
             get => _gender;
             set => _gender = value;
         }
+
+        /// <summary>
+        /// Установка и получение поля _address.
+        /// </summary>
         public string Address
         {
             get => _address;
@@ -66,6 +81,11 @@ namespace Lab5
                 }
             }
         }
+
+        /// <summary>
+        /// Установка и получение поля _contact.
+        /// Номер телефона в формате +************
+        /// </summary>
         public string Contact
         {
             get => _contact;
@@ -83,6 +103,14 @@ namespace Lab5
         }
 
         //gender - true men, false woman
+        /// <summary>
+        /// Создает новый экземпляр класса School с заданными значениями.
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Гендер (true men, false woman)</param>
+        /// <param name="address">Адрес проживания</param>
+        /// <param name="contact">Номер телефона</param>
         public School(string name, byte age, bool gender, string address, string contact)
         {
             Name = name;
@@ -91,11 +119,5 @@ namespace Lab5
             Address = address;
             Contact = contact;
         }
-
-        //public override string ToString()
-        //{
-        //    return Gender ? $"\nName: {Name};\nAge: {Age};\nGender: Man;\nAddress: {Address};\nContact: {Contact};" :
-        //    $"\nName: {Name};\nAge: {Age};\nGender: Woman;\nAddress: {Address};\nContact: {Contact};";
-        //}
     }
 }

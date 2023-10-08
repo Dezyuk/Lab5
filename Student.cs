@@ -1,25 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс Student. Содержит свойства Student, а также имитирует свойства класса Community
+    /// </summary>
     internal class Student : Community
     {
-        //grade - класс
-        //mark - оценка
         private byte _mark;
         private byte _grade;
         private string _id;
+        private const byte MAX_MARK = 12;
+        private const byte MIN_MARK = 1;
+        private const byte MAX_GRADE = 11;
+        private const byte MIN_GRADE = 1;
+        private const byte MIN_ID_LENGHT = 5;
 
+        /// <summary>
+        /// Установка и получение поля _mark.
+        /// </summary>
         public byte Mark
         {
             get => _mark;
             set
             {
-                if (value > 0 && value < 13)
+                if (value >= MIN_MARK && value <= MAX_MARK)
                 {
                     _mark = value;
                 }
@@ -30,12 +35,15 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля _id.
+        /// </summary>
         public string Id
         {
             get => _id;
             set
             {
-                if (!string.IsNullOrEmpty(value) && value.Length >= 5)
+                if (!string.IsNullOrEmpty(value) && value.Length >= MIN_ID_LENGHT)
                 {
                     _id = (value.ToUpper()).Trim();
                 }
@@ -46,12 +54,15 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля _grade.
+        /// </summary>
         public byte Grade
         {
             get => _grade;
             set
             {
-                if (value > 0 && value < 12)
+                if (value >= MIN_GRADE && value <= MAX_GRADE)
                 {
                     _grade = value;
                 }
@@ -62,6 +73,17 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Student и наследует свойства Community.
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Гендер (true men, false woman)</param>
+        /// <param name="address">Адрес проживания</param>
+        /// <param name="contact">Номер телефона</param>
+        /// <param name="mark">Оценка</param>
+        /// <param name="id">Айди ученика</param>
+        /// <param name="grade">Класс</param>
         public Student(string name, byte age, bool gender, string address, string contact, byte mark, string id, byte grade) : base(name, age, gender, address, contact)
         {
             Mark = mark;

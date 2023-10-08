@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab5
 {
@@ -10,9 +6,9 @@ namespace Lab5
     {
         static void Main(string[] args)
         {
-            Teacher teacher = new Teacher("Valera", 24, true, "sadsa", "+380111111111", "Matan", 4, "Vyshae ne polnoe");
-            Student student = new Student("Valera", 7, true, "+380111111111", "+380111111111", 5, "cD541", 8);
-            SecurityGuard guard = new SecurityGuard("Valera", 60, true, "+380111111111", "+380111111111", 5, 15000, 8);
+            Teacher teacher = new Teacher("Ivanov Ivan Ivanovich", 25, true, "Address", "+380151655154", "Mathematics", 4, "Highest");
+            Student student = new Student("Ivanova Ivanna Ivanovna", 15, false, "Address", "+380151655154", 11, "cD541", 8);
+            SecurityGuard guard = new SecurityGuard("Ivanov Ivan Ivanovich", 60, true, "Address", "+380151655154", 5, 15000, 8);
 
 
             Community schoolCommunity = new Community();
@@ -20,22 +16,28 @@ namespace Lab5
             schoolCommunity.AddPerson(student);
             schoolCommunity.AddPerson(guard);
 
-            foreach (var member in schoolCommunity.SchoolCommunity)
+            foreach (var community in schoolCommunity.SchoolCommunity)
             {
-                 Console.WriteLine("--------------------------------------------\n" + member);
+                 Console.WriteLine(community);
             }
             Console.WriteLine("\n\nDelete element #2\n\n");
             schoolCommunity.DeletePerson(1);
-            foreach (var member in schoolCommunity.SchoolCommunity)
+            foreach (var community in schoolCommunity.SchoolCommunity)
             {
-                Console.WriteLine("--------------------------------------------\n" + member);
+                Console.WriteLine(community);
             }
-            /*Console.WriteLine("////////////////////////////////////////////////////////////");
-            Console.WriteLine("Edit element 1");
-            Console.WriteLine("////////////////////////////////////////////////////////////");
+            Console.WriteLine("\n\nEdit element 1\n\n");
 
-            schoolCommunity.EditSchoolCommunityMember(0, "NUOP", "Edit name");
-            Console.WriteLine(schoolCommunity.SchoolCommunity[0]);*/
+            //если необходимо изменить параметр у объекта
+            teacher.ExperienceYears = 5;
+
+            //если необходимо заменить один элемент в массиве другим
+            schoolCommunity.EditCommunity(1, student);
+
+            foreach (var community in schoolCommunity.SchoolCommunity)
+            {
+                Console.WriteLine(community);
+            }
 
             Console.ReadLine();
         }
