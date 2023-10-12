@@ -5,7 +5,7 @@ namespace Lab5
     /// <summary>
     /// Класс Student. Содержит свойства Student, а также имитирует свойства класса Community
     /// </summary>
-    internal class Student : Community
+    internal class Student : Person
     {
         private byte _mark;
         private byte _grade;
@@ -17,7 +17,7 @@ namespace Lab5
         private const byte MIN_ID_LENGHT = 5;
 
         /// <summary>
-        /// Установка и получение поля _mark.
+        /// Установка и получение поля _mark(Оценка).
         /// </summary>
         public byte Mark
         {
@@ -36,7 +36,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _id.
+        /// Установка и получение поля _id(ID ученика).
         /// </summary>
         public string Id
         {
@@ -55,7 +55,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _grade.
+        /// Установка и получение поля _grade(Класс в котором учится ученик).
         /// </summary>
         public byte Grade
         {

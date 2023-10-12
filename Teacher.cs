@@ -5,14 +5,14 @@ namespace Lab5
     /// <summary>
     /// Класс Teacher. Содержит свойства Teacher, а также имитирует свойства класса Community
     /// </summary>
-    internal class Teacher : Community
+    internal class Teacher : Person
     {
         private string _subject;
         private byte _experienceYears;
         private string _qualification;
 
         /// <summary>
-        /// Установка и получение поля _subject.
+        /// Установка и получение поля _subject(Преподаваемый предмет).
         /// </summary>
         public string Subject
         {
@@ -32,7 +32,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _experienceYears.
+        /// Установка и получение поля _experienceYears(Опыт работы).
         /// </summary>
         public byte ExperienceYears
         {
@@ -41,7 +41,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _qualification.
+        /// Установка и получение поля _qualification(Квалификация).
         /// </summary>
         public string Qualification
         {

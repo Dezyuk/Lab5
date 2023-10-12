@@ -1,123 +1,64 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 
 namespace Lab5
 {
     /// <summary>
-    /// Класс School содержит общую информацию о школе.
+    /// Базовый класс-агрегат, который состоит из общей информации о школе.
+    /// Также содержит коллекцию людей, связанных со школой.
     /// </summary>
     internal class School
     {
-        private string _name;
-        private byte _age;
-        private bool _gender;
-        private string _address;
-        private string _contact;
-        private const byte MAX_YEAR = 100;
+        private Person[] _person;
 
         /// <summary>
-        /// Установка и получение поля _name.
+        /// Создает массив, который будет содержать людей, связанных со школой.
         /// </summary>
-        public string Name
+        public School()
         {
-            get => _name;
-            set
+            _person = new Person[0];
+        }
+
+        /// <summary>
+        /// Добавление объекта в массив.
+        /// </summary>
+        /// <param name="person">Экземпляр класса Person или производных от него классов.</param>
+        public void AddPerson(Person person)
+        {
+            Array.Resize(ref _person, _person.Length + 1);
+            _person[_person.Length - 1] = person;
+        }
+
+        /// <summary>
+        /// Удаление объекта из массива.
+        /// </summary>
+        /// <param name="personId">Индекс элемента который необходимо удалить.</param>
+        public void DeletePerson(int personId)
+        {
+            if (personId >= 0 && personId < _person.Length)
             {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _name = value.Trim();
-                }
-                else
-                {
-                    throw new FormatException("Incorrect name.");
-                }
+                Array.Copy(_person, personId + 1, _person, personId, _person.Length - personId - 1);
+                Array.Resize(ref _person, _person.Length - 1);
             }
         }
 
         /// <summary>
-        /// Установка и получение поля _age.
+        /// Изменение элементов массива (реализована замена одного элемента на переданный новый, так как возможно изменять поля объектов напрямую).
         /// </summary>
-        public byte Age
+        /// <param name="index">Индекс элемента который необходимо заменить.</param>
+        /// <param name="element">Новый элемент.</param>
+        /// <exception cref="FormatException"></exception>
+        public void EditCommunity(uint index, Person element)
         {
-            get => _age;
-            set
+            if (index >= 0 && index < Person.Length)
             {
-                if (value < MAX_YEAR)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    throw new FormatException("Incorrect age.");
-                }
+                Person[index] = element;
+            }
+            else
+            {
+                throw new FormatException("Incorrect array index.");
             }
         }
+        public Person[] Person => _person;
 
-        /// <summary>
-        /// Установка и получение поля _gender.
-        /// </summary>
-        public bool Gender
-        {
-            get => _gender;
-            set => _gender = value;
-        }
-
-        /// <summary>
-        /// Установка и получение поля _address.
-        /// </summary>
-        public string Address
-        {
-            get => _address;
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _address = char.ToUpper(value[0]) + value.Substring(1).ToLower().Trim();
-                }
-
-                else
-                {
-                    throw new FormatException("Incorrect address.");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Установка и получение поля _contact.
-        /// Номер телефона в формате +************
-        /// </summary>
-        public string Contact
-        {
-            get => _contact;
-            set
-            {
-                if ((!string.IsNullOrEmpty(value)) && (Regex.IsMatch(value, @"^\+\d{12}$")))
-                {
-                    _contact = value.Trim();
-                }
-                else
-                {
-                    throw new FormatException("Incorrect phone number");
-                }
-            }
-        }
-
-        //gender - true men, false woman
-        /// <summary>
-        /// Создает новый экземпляр класса School с заданными значениями.
-        /// </summary>
-        /// <param name="name">Имя</param>
-        /// <param name="age">Возраст</param>
-        /// <param name="gender">Гендер (true men, false woman)</param>
-        /// <param name="address">Адрес проживания</param>
-        /// <param name="contact">Номер телефона</param>
-        public School(string name, byte age, bool gender, string address, string contact)
-        {
-            Name = name;
-            Age = age;
-            Gender = gender;
-            Address = address;
-            Contact = contact;
-        }
     }
 }

@@ -5,7 +5,7 @@ namespace Lab5
     /// <summary>
     /// Класс SecurityGuard. Содержит свойства SecurityGuard, а также имитирует свойства класса Community
     /// </summary>
-    internal class SecurityGuard : Community
+    internal class SecurityGuard : Person
     {
         private byte _experienceYears;
         private uint _salary;
@@ -17,7 +17,7 @@ namespace Lab5
         private const int MAX_SALARY = 18000;
 
         /// <summary>
-        /// Установка и получение поля _experienceYears.
+        /// Установка и получение поля _experienceYears(Опыт работы).
         /// </summary>
         public byte ExperienceYears
         {
@@ -36,7 +36,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _salary.
+        /// Установка и получение поля _salary(Зарплата).
         /// </summary>
         public uint Salary
         {
@@ -55,7 +55,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Установка и получение поля _workingHours.
+        /// Установка и получение поля _workingHours(Время одной смены).
         /// </summary>
         public byte WorkingHours
         {
