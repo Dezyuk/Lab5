@@ -23,6 +23,7 @@ namespace Lab5
             get => _name;
             set
             {
+                //Проверка не является ли переданная строка Null.
                 if (!string.IsNullOrEmpty(value))
                 {
                     _name = value.Trim();
@@ -42,6 +43,7 @@ namespace Lab5
             get => _age;
             set
             {
+                //Проверка что переданное число не более 100(MAX_YEAR).
                 if (value < MAX_YEAR)
                 {
                     _age = value;
@@ -70,6 +72,7 @@ namespace Lab5
             get => _address;
             set
             {
+                //Проверка не является ли переданная строка Null.
                 if (!string.IsNullOrEmpty(value))
                 {
                     _address = char.ToUpper(value[0]) + value.Substring(1).ToLower().Trim();
@@ -91,6 +94,7 @@ namespace Lab5
             get => _contact;
             set
             {
+                //Проверка не является ли переданная строка Null, а также на то что переданная строка передана в формате +************.
                 if ((!string.IsNullOrEmpty(value)) && (Regex.IsMatch(value, @"^\+\d{12}$")))
                 {
                     _contact = value.Trim();

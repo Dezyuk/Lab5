@@ -3,7 +3,7 @@
 namespace Lab5
 {
     /// <summary>
-    /// Класс Teacher. Содержит свойства Teacher, а также имитирует свойства класса Community
+    /// Класс Teacher. Содержит свойства Teacher, а также имитирует свойства класса Person.
     /// </summary>
     internal class Teacher : Person
     {
@@ -19,6 +19,7 @@ namespace Lab5
             get => _subject;
             set
             {
+                //Проверка не является ли переданная строка Null.
                 if (!string.IsNullOrEmpty(value))
                 {
                     _subject = char.ToUpper(value[0]) + value.Substring(1).ToLower().Trim();
@@ -48,6 +49,7 @@ namespace Lab5
             get => _qualification;
             set
             {
+                //Проверка не является ли переданная строка Null.
                 if (!string.IsNullOrEmpty(value))
                 {
                     _qualification = char.ToUpper(value[0]) + value.Substring(1).ToLower().Trim();
@@ -61,7 +63,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Teacher и наследует свойства Community.
+        /// Создает новый экземпляр класса Teacher и наследует свойства Person.
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="age">Возраст</param>

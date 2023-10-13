@@ -3,7 +3,7 @@
 namespace Lab5
 {
     /// <summary>
-    /// Класс Student. Содержит свойства Student, а также имитирует свойства класса Community
+    /// Класс Student. Содержит свойства Student, а также имитирует свойства класса Person.
     /// </summary>
     internal class Student : Person
     {
@@ -24,6 +24,7 @@ namespace Lab5
             get => _mark;
             set
             {
+                //Проверка что переданное значение больше либо равно 1(MIN_MARK) и меньше либо равно 12(MAX_MARK).
                 if (value >= MIN_MARK && value <= MAX_MARK)
                 {
                     _mark = value;
@@ -43,6 +44,7 @@ namespace Lab5
             get => _id;
             set
             {
+                //Проверка не является ли переданная строка Null, а также что длина ID больше или равно 5(MIN_ID_LENGHT).
                 if (!string.IsNullOrEmpty(value) && value.Length >= MIN_ID_LENGHT)
                 {
                     _id = (value.ToUpper()).Trim();
@@ -62,6 +64,7 @@ namespace Lab5
             get => _grade;
             set
             {
+                //Проверка что переданное значение больше либо равно 1(MIN_GRADE) и меньше либо равно 11(MAX_GRADE).
                 if (value >= MIN_GRADE && value <= MAX_GRADE)
                 {
                     _grade = value;
@@ -74,7 +77,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Student и наследует свойства Community.
+        /// Создает новый экземпляр класса Student и наследует свойства Person.
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="age">Возраст</param>

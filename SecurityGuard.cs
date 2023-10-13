@@ -3,14 +3,14 @@
 namespace Lab5
 {
     /// <summary>
-    /// Класс SecurityGuard. Содержит свойства SecurityGuard, а также имитирует свойства класса Community
+    /// Класс SecurityGuard. Содержит свойства SecurityGuard, а также имитирует свойства класса Person.
     /// </summary>
     internal class SecurityGuard : Person
     {
         private byte _experienceYears;
         private uint _salary;
         private byte _workingHours;
-        private const byte MIN_EXPERIENCE_YEAR = 0;
+        private const byte MIN_EXPERIENCE_YEAR = 2;
         private const byte MIN_WORK_HOURS = 1;
         private const byte MAX_WORK_HOURS = 9;
         private const int MIN_SALARY = 12000;
@@ -24,6 +24,7 @@ namespace Lab5
             get => _experienceYears;
             set
             {
+                //Проверка что переданное значение больше либо равно 2(MIN_EXPERIENCE_YEAR).
                 if (value >= MIN_EXPERIENCE_YEAR)
                 {
                     _experienceYears = value;
@@ -43,6 +44,7 @@ namespace Lab5
             get => _salary;
             set
             {
+                //Проверка что переданное значение больше либо равно 12000(MIN_SALARY) и меньше либо равно 18000(MAX_SALARY).
                 if (value >= MIN_SALARY && value <= MAX_SALARY)
                 {
                     _salary = value;
@@ -62,6 +64,7 @@ namespace Lab5
             get => _workingHours;
             set
             {
+                //Проверка что переданное значение больше 1(MIN_WORK_HOURS) и меньше 9(MAX_WORK_HOURS).
                 if (value > MIN_WORK_HOURS && value < MAX_WORK_HOURS)
                 {
                     _workingHours = value;
@@ -74,7 +77,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса SecurityGuard и наследует свойства Community.
+        /// Создает новый экземпляр класса SecurityGuard и наследует свойства Person.
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="age">Возраст</param>
