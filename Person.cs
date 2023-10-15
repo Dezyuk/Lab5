@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 namespace Lab5
 {
     /// <summary>
-    /// Класс School содержит общую информацию о школе.
+    /// Класс Person содержит общую информацию о человеке.
     /// </summary>
     internal class Person
     {
@@ -108,7 +108,7 @@ namespace Lab5
 
         //gender - true men, false woman
         /// <summary>
-        /// Создает новый экземпляр класса School с заданными значениями.
+        /// Создает новый экземпляр класса Person с заданными значениями.
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="age">Возраст</param>
