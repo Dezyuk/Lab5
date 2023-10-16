@@ -16,13 +16,13 @@ namespace Lab5
             schoolCommunity.AddPerson(student);
             schoolCommunity.AddPerson(guard);
 
-            foreach (var community in schoolCommunity.Person)
+            foreach (var community in schoolCommunity.People)
             {
                  Console.WriteLine(community);
             }
             Console.WriteLine("\n\nDelete element #2\n\n");
             schoolCommunity.DeletePerson(1);
-            foreach (var community in schoolCommunity.Person)
+            foreach (var community in schoolCommunity.People)
             {
                 Console.WriteLine(community);
             }
@@ -34,7 +34,7 @@ namespace Lab5
             //если необходимо заменить один элемент в массиве другим
             schoolCommunity.EditCommunity(1, student);
 
-            foreach (var community in schoolCommunity.Person)
+            foreach (var community in schoolCommunity.People)
             {
                 Console.WriteLine(community);
             }

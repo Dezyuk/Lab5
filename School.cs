@@ -8,14 +8,14 @@ namespace Lab5
     /// </summary>
     internal class School
     {
-        private Person[] _person;
+        private Person[] _people;
 
         /// <summary>
         /// Создает массив, который будет содержать людей, связанных со школой.
         /// </summary>
         public School()
         {
-            _person = new Person[0];
+            _people = new Person[0];
         }
 
         /// <summary>
@@ -24,8 +24,16 @@ namespace Lab5
         /// <param name="person">Экземпляр класса Person или производных от него классов.</param>
         public void AddPerson(Person person)
         {
-            Array.Resize(ref _person, _person.Length + 1);
-            _person[_person.Length - 1] = person;
+            if(person is null)
+            {
+                throw new FormatException("Incorrect person parameter.");
+            }
+            else
+            {
+                Array.Resize(ref _people, _people.Length + 1);
+                _people[_people.Length - 1] = person;
+            }
+            
         }
 
         /// <summary>
@@ -34,10 +42,10 @@ namespace Lab5
         /// <param name="personId">Индекс элемента который необходимо удалить.</param>
         public void DeletePerson(int personId)
         {
-            if (personId >= 0 && personId < _person.Length)
+            if (personId >= 0 && personId < _people.Length)
             {
-                Array.Copy(_person, personId + 1, _person, personId, _person.Length - personId - 1);
-                Array.Resize(ref _person, _person.Length - 1);
+                Array.Copy(_people, personId + 1, _people, personId, _people.Length - personId - 1);
+                Array.Resize(ref _people, _people.Length - 1);
             }
         }
 
@@ -49,16 +57,16 @@ namespace Lab5
         /// <exception cref="FormatException"></exception>
         public void EditCommunity(uint index, Person element)
         {
-            if (index >= 0 && index < Person.Length)
+            if (index >= 0 && index < People.Length && !(element is null))
             {
-                Person[index] = element;
+                People[index] = element;
             }
             else
             {
-                throw new FormatException("Incorrect array index.");
+                throw new FormatException("Incorrect array index, or person parameter");
             }
         }
-        public Person[] Person => _person;
+        public Person[] People => _people;
 
     }
 }
